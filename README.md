@@ -4,6 +4,7 @@
 **Paradigm: Non-Linguistic Cognitive Architecture**
 
 **The Mission**
+
 Iris is not another Large Language Model. It is a Cognitive Architecture designed to replicate the functional layers of the human brain. While Silicon Valley is optimized for "next-token prediction," Iris is optimized for Adaptive Intelligence. It is built on the reality that humans think, reason, and remember long before they speak.
 
 **Core Theoretical Framework**
