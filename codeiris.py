@@ -1,3 +1,16 @@
+
+# ============================================================================
+# PROJECT: IRIS COGNITIVE ARCHITECTURE
+# ARCHITECT: DAVIES B. KALORI
+# LICENSE: PROPRIETARY - ALL RIGHTS RESERVED
+# ----------------------------------------------------------------------------
+# NOTICE: Unauthorized copying, modification, or distribution of this file
+# via any medium is strictly prohibited. This code is the exclusive property
+# of Davies B. Kalori.
+# ============================================================================
+
+
+
 """
 IRIS AGI - Complete Cognitive Architecture
 Author: Davies B. Kalori
