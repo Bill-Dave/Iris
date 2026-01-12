@@ -3,10 +3,10 @@ Author: Davies B. Kalori
 Status: Foundation Implementation (10,000+ LOC)
 Paradigm: Non-Linguistic Cognitive Architecture
 
-The Mission
+**The Mission
 Iris is not another Large Language Model. It is a Cognitive Architecture designed to replicate the functional layers of the human brain. While Silicon Valley is optimized for "next-token prediction," Iris is optimized for Adaptive Intelligence. It is built on the reality that humans think, reason, and remember long before they speak.
 
-Core Theoretical Framework
+**Core Theoretical Framework
 1. Knowledge Interference Theory (KIT)
 Iris rejects the lossy compression of traditional neural weights. Based on Kalori’s Principle, Iris treats memory as a constructive process.
 Axiom 2 (Storage Fidelity): Knowledge is stored AS-IS. We do not re-represent or compress signals into symbols.
