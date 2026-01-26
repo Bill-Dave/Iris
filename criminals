@@ -1,0 +1,41 @@
+!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: "Times New Roman", Times, serif; line-height: 1.6; margin: 40px; }
+        h1 { text-align: center; text-transform: uppercase; font-size: 18pt; margin-bottom: 30px; }
+        h2 { font-size: 14pt; border-bottom: 1px solid black; margin-top: 30px; }
+        h3 { font-size: 12pt; text-decoration: underline; margin-top: 20px; }
+        p { text-align: justify; margin-bottom: 15px; text-indent: 50px; }
+        .abstract { font-style: italic; margin: 20px 50px; text-align: center; }
+        .reference { margin-left: 50px; text-indent: -50px; }
+    </style>
+</head>
+<body>
+    <h1>CRIMINAL LIABILITY ANALYSIS: THE CASE OF THE TAJIRI RESIDENCE BURGLARY</h1>
+    <p style="text-align: center;"><strong>Prepared By:</strong> Iris AGI Scholar v41.6</p>
+    <p style="text-align: center;"><strong>Course:</strong> B.Sc. Criminology and Criminal Justice (Applied Legal Synthesis)</p>
+    <p style="text-align: center;"><strong>Date:</strong> January 26, 2026</p>
+    <div class="abstract">
+        <strong>Abstract:</strong> This dissertation examines the multi-party criminal liability arising from the attempted theft at the residence of 'Tajiri'. Through the lens of the Kenyan Penal Code (Cap 63) and the Children Act (2022), it explores the complex interplay of conspiracy, the doctrine of innocent agency, and the legal implications of factual impossibility in criminal attempts.
+    </div>
+    <h2>1. INTRODUCTION</h2>
+    <p>The incident at the Tajiri residence presents a multifaceted criminal enterprise involving four primary actors: Mpishi (the facilitator), Mkora (the principal actor), Mhuni (the accessory), and Mtoto (the innocent agent). The subsequent arrest of all parties necessitates a rigorous categorization of their respective roles under Kenyan jurisprudence, specifically focusing on the intersection of individual intent and collaborative architecture.</p>
+    <h2>2. LEGAL ANALYSIS OF THE PARTIES</h2>
+    <h3>A. Liability of Mkora (The Principal Intruder)</h3>
+    <p>Mkora’s liability is established through three primary vectors. First, his entry into the residence at 6:30 p.m. constitutes *Housebreaking* under Section 304 of the Penal Code. Although the door was left slightly open by Mpishi, the intent to commit a felony therein satisfies the *mens rea* required for the offense. More critically, Mkora utilized his eight-year-old son, Mtoto, as a physical tool to manipulate the safe’s lock. Under Section 221 of the <strong>Children Act 2022</strong>, the age of criminal responsibility is 12 years. Consequently, Mtoto acts as an <strong>Innocent Agent</strong>. In law, the acts of an innocent agent are imputed directly to the procurer; thus, Mkora is the principal offender for the physical opening of the safe.</p>
+    <p>Furthermore, the discovery of an empty safe introduces the concept of <strong>Factual Impossibility</strong>. Mkora may attempt to argue that since there was no money to steal, no crime was committed. However, Section 388(3) of the Penal Code explicitly clarifies that factual impossibility is immaterial to a charge of an attempt. Mkora’s overt act of opening the safe, coupled with the intent to steal Ksh. 500,000, confirms his liability for <strong>Attempted Stealing</strong>.</p>
+    <h3>B. Liability of Mpishi (The Insider Facilitator)</h3>
+    <p>Mpishi’s role as the "inside agent" exposes her to liability as a principal offender under Section 20 of the Penal Code. By persuading Mkora, leaving the backdoor open, and providing the safe code, she provided the essential *actus reus* of facilitation. Her actions constitute a <strong>Conspiracy to Commit a Felony</strong> under Section 393. Additionally, as an employee of Tajiri, her actions might be qualified as <strong>Stealing by Servant</strong> (Section 281), as she effectively authorized the removal of her master's property through an external proxy.</p>
+    <h3>C. Liability of Mhuni (The Transportation Accessory)</h3>
+    <p>Mhuni’s liability stems from <strong>Aiding and Abetting</strong>. Under Section 21 of the Penal Code, when two or more persons form a common intention to prosecute an unlawful purpose, each is responsible for acts committed by the other that are a "probable consequence" of that purpose. Mhuni’s agreement to transport Mkora and wait at the back entrance establishes his role in the conspiracy. His flight from the scene upon the arrival of Zed does not mitigate prior liability, as the offense of conspiracy and the attempt cycle were already in motion.</p>
+    <h2>3. THE ROLE OF MTOTO (Doli Incapax)</h2>
+    <p>The involvement of the minor, Mtoto, is a critical legal pivot. At eight years old, he falls below the threshold of criminal responsibility. He lacked the capacity to form *mens rea*. In the eyes of the court, he is a victim of exploitation by Mkora. While the police arrested him, the <strong>Children Act 2022</strong> necessitates his immediate release and potential referral to child protection services, while his father faces additional charges for involving a minor in criminal activities.</p>
+    <h2>4. CONCLUSION</h2>
+    <p>In summary, the liability matrix is robust. Mpishi and Mhuni are liable for conspiracy and aiding, while Mkora bears the weight of the attempt through the doctrine of innocent agency. The empty safe serves as no shield for the defendants, as Kenyan law prioritizes the manifestation of criminal intent over the accidental failure of the crime's objective.</p>
+    <h2>REFERENCES</h2>
+    <div class="reference">Republic of Kenya. (2010). <em>The Constitution of Kenya</em>. Nairobi: Government Printer.</div>
+    <div class="reference">Republic of Kenya. (2022). <em>The Children Act</em>. Nairobi: Government Printer.</div>
+    <div class="reference">Republic of Kenya. (2012). <em>The Penal Code (Cap. 63)</em>. Nairobi: Government Printer.</div>
+</body>
+</html>
