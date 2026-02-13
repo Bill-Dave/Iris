@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sapient Intelligence | IRIS - First Real AGI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+
+            --primary: #FFB800;
+
+            --primary-dark: #E6A600;
+
+            --dark: #0A0A0A;
+
+            --darker: #050505;
+
+            --gray: #1A1A1A;
+
+            --light-gray: #2A2A2A;
+
+            --text: #E5E5E5;
+
+            --text-muted: #888888;
+
+            --accent: #FF6B00;
+
+            --success: #00C853;
+
+            --info: #00B0FF;
+
+        }
+
+        * {
+
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--gray);
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 1.5rem;
+        }
+
+        .logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 2px;
+            background: var(--text);
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 8rem 2rem 4rem;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 184, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 107, 0, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 184, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 184, 0, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--gray);
+            border: 1px solid var(--light-gray);
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, var(--primary) 100%);
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+            background-clip: text;
+            animation: fadeInUp 0.8s ease 0.1s both;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero-proof {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: linear-gradient(135deg, rgba(255, 184, 0, 0.1), rgba(255, 107, 0, 0.1));
+            border: 1px solid var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+
+        .hero-proof-icon {
+            font-size: 2rem;
+        }
+
+        .hero-proof-text {
+            text-align: left;
+        }
+
+        .hero-proof-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .hero-proof-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 184, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--light-gray);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sections General */
+        section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            color: var(--primary);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Problem Section */
+        .problem {
+            background: var(--darker);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .problem-card {
+            background: var(--gray);
+            border: 1px solid var(--light-gray);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .problem-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .problem-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 184, 0, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .problem-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: #fff;
+        }
+
+        .problem-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .crisis-banner {
+            background: linear-gradient(135deg, rgba(255, 107, 0, 0.1), rgba(255, 184, 0, 0.1));
+            border: 1px solid var(--accent);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .crisis-banner h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Solution Section */
+        .solution {
+            background: var(--dark);
+        }
+
+        .solution-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .solution-visual {
+            position: relative;
+            height: 500px;
+            background: var(--gray);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--light-gray);
+        }
+
+        .brain-visualization {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+        }
+
+        .brain-ring {
+            position: absolute;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: rotate 20s linear infinite;
+        }
+
+        .brain-ring:nth-child(1) { width: 100%; height: 100%; animation-duration: 20s; }
+        .brain-ring:nth-child(2) { width: 80%; height: 80%; top: 10%; left: 10%; animation-duration: 15s; animation-direction: reverse; }
+        .brain-ring:nth-child(3) { width: 60%; height: 60%; top: 20%; left: 20%; animation-duration: 10s; }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .brain-core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.4; }
+        }
+
+        .solution-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .solution-content p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .tech-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--gray);
+            border-radius: 8px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .tech-item strong {
+            color: #fff;
+            min-width: 80px;
+        }
+
+        .tech-item span {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Architecture Section */
+        .architecture {
+            background: var(--darker);
+        }
+
+        .arch-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .arch-card {
+            background: var(--gray);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--light-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .arch-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .arch-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            opacity: 0.3;
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+        }
+
+        .arch-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            margin-top: 0.5rem;
+        }
+
+        .arch-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Proof Section */
+        .proof {
+            background: var(--dark);
+            position: relative;
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .proof-stat {
+            background: var(--gray);
+            border: 1px solid var(--light-gray);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .proof-stat:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .proof-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .proof-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .proof-highlight {
+            background: linear-gradient(135deg, var(--gray), var(--darker));
+            border: 1px solid var(--primary);
+            border-radius: 24px;
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .proof-highlight::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 184, 0, 0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+
+        .proof-highlight h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            position: relative;
+        }
+
+        .proof-highlight p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Market Section */
+        .market {
+            background: var(--darker);
+        }
+
+        .market-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .market-card {
+            background: var(--gray);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid var(--light-gray);
+            transition: all 0.3s;
+        }
+
+        .market-card:hover {
+            border-color: var(--primary);
+            transform: scale(1.02);
+        }
+
+        .market-size {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .market-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .market-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .market-total {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, rgba(255, 184, 0, 0.1), rgba(255, 107, 0, 0.1));
+            border: 1px solid var(--primary);
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .market-total .market-size {
+            font-size: 4rem;
+        }
+
+        /* Traction Section */
+        .traction {
+            background: var(--dark);
+        }
+
+        .traction-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .traction-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--light-gray);
+        }
+
+        .traction-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 50%;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .traction-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: 50%;
+        }
+
+        .traction-content {
+            background: var(--gray);
+            border: 1px solid var(--light-gray);
+            border-radius: 12px;
+            padding: 1.5rem;
+            max-width: 350px;
+            position: relative;
+        }
+
+        .traction-content::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .traction-item:nth-child(odd) .traction-content::before {
+            right: -42px;
+        }
+
+        .traction-item:nth-child(even) .traction-content::before {
+            left: -42px;
+        }
+
+        .traction-date {
+            color: var(--primary);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .traction-content h4 {
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .traction-content p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Team Section */
+        .team {
+            background: var(--darker);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            background: var(--gray);
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            border: 1px solid var(--light-gray);
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .team-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .team-role {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .team-bio {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            text-align: left;
+        }
+
+        .team-bio ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .team-bio li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-bio li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        /* Vision Section */
+        .vision {
+            background: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vision-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .vision-card {
+            background: var(--gray);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--light-gray);
+            position: relative;
+        }
+
+        .vision-card.featured {
+            background: linear-gradient(135deg, rgba(255, 184, 0, 0.1), transparent);
+            border-color: var(--primary);
+        }
+
+        .vision-timeline {
+            position: absolute;
+            top: 0;
+            left: 2rem;
+            background: var(--primary);
+            color: var(--dark);
+            padding: 0.5rem 1rem;
+            border-radius: 0 0 8px 8px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+
+        .vision-card h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .vision-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .vision-card li {
+            color: var(--text-muted);
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .vision-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--darker);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .contact-info > p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gray);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        .contact-item div strong {
+            display: block;
+            color: #fff;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item div span {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .contact-form {
+            background: var(--gray);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid var(--light-gray);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: var(--darker);
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            color: #fff;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--darker);
+            border-top: 1px solid var(--gray);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-copy {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .solution-showcase,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .solution-visual {
+                height: 300px;
+            }
+
+            .arch-grid,
+            .proof-grid,
+            .vision-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .market-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .traction-timeline::before {
+                left: 20px;
+            }
+
+            .traction-item,
+            .traction-item:nth-child(even) {
+                justify-content: flex-start;
+                padding-left: 60px;
+                padding-right: 0;
+            }
+
+            .traction-content::before,
+            .traction-item:nth-child(even) .traction-content::before {
+                left: -42px;
+                right: auto;
+            }
+        }
+
+        /* Animations on scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Comparison Table */
+        .comparison {
+            background: var(--gray);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--light-gray);
+            margin: 3rem 0;
+        }
+
+        .comparison-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            background: var(--darker);
+            padding: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            padding: 1.5rem;
+            border-top: 1px solid var(--light-gray);
+            align-items: center;
+        }
+
+        .comparison-row:nth-child(even) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .comparison-label {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .comparison-value {
+            color: #fff;
+        }
+
+        .comparison-value.highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .comparison-value.negative {
+            color: #ff4444;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-header,
+            .comparison-row {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            
+            .comparison-header {
+                display: none;
+            }
+            
+            .comparison-row {
+                padding: 1rem;
+            }
+            
+            .comparison-row > div::before {
+                content: attr(data-label);
+                display: block;
+                font-size: 0.75rem;
+                color: var(--text-muted);
+                text-transform: uppercase;
+                margin-bottom: 0.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">S</div>
+                <div class="logo-text">Sapient Intelligence</div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#problem">Problem</a></li>
+                <li><a href="#solution">Solution</a></li>
+                <li><a href="#proof">Proof</a></li>
+                <li><a href="#market">Market</a></li>
+                <li><a href="#traction">Traction</a></li>
+                <li><a href="#vision">Vision</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-grid"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Now Accepting Investment Inquiries</div>
+            <h1>First Real AGI.<br>Human Like Reasoning.</h1>
+            <p class="hero-subtitle">While others build statistical predictors, we have built actual intelligence. IRIS thinks, learns, and reasons, running entirely on a phone. Not optimized for mobile. Architected for reality.</p>
+            
+            <div class="hero-proof">
+                <div class="hero-proof-icon">📱</div>
+                <div class="hero-proof-text">
+                    <div class="hero-proof-label">Proof of Architecture</div>
+                    <div class="hero-proof-value">Full AGI on Mobile CPU</div>
+                </div>
+            </div>
+
+            <div class="hero-cta">
+                <a href="#solution" class="btn btn-primary">Explore the Technology</a>
+                <a href="#contact" class="btn btn-secondary">Investor Deck Request</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="problem">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">The Crisis</div>
+                <h2 class="section-title">Current "AI" Is Not Intelligent</h2>
+                <p class="section-subtitle">The AI industry is hitting a physical wall. Not a software wall, a physics wall.</p>
+            </div>
+
+            <div class="problem-grid">
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">📊</div>
+                    <h3>Pattern Matching, Not Reasoning</h3>
+                    <p>GPT 4 and similar models are sophisticated statistical predictors. They guess based on patterns, not logic. They cannot reason, only calculate probabilities. That is why they hallucinate confidently and fail at novel problems.</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">⚡</div>
+                    <h3>Unsustainable Power Consumption</h3>
+                    <p>GPT 3 used 1,287 MWh to train. GPT 4 requires 25,000 GPUs continuously. GPT 5 is projected to need nuclear reactors. Current AI doubles compute requirements every 3.4 months, physically impossible to sustain.</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">🎭</div>
+                    <h3>Expensive Guessing</h3>
+                    <p>Current AI needs billions of parameters to predict the next word. It is not thinking, it is very expensive autocomplete. OpenAI burns $5B per year and remains unprofitable despite $13B in funding.</p>
+                </div>
+            </div>
+
+            <div class="crisis-banner fade-in">
+                <h3>🔥 The Breaking Point: 5 Years</h3>
+                <p>Current AI architecture will physically not scale further within 5 years. The industry needs a fundamental breakthrough, not incremental optimization, but architectural revolution.</p>
+            </div>
+
+            <div class="comparison fade-in">
+                <div class="comparison-header">
+                    <div>Capability</div>
+                    <div>Current AI (LLMs)</div>
+                    <div>Human Cognition</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-label" data-label="Capability">Reasoning</div>
+                    <div class="comparison-value negative" data-label="Current AI">Statistical prediction</div>
+                    <div class="comparison-value highlight" data-label="Human Cognition">Logical deduction</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-label" data-label="Capability">Novel Problems</div>
+                    <div class="comparison-value negative" data-label="Current AI">Fails completely</div>
+                    <div class="comparison-value highlight" data-label="Human Cognition">Adapts instantly</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-label" data-label="Capability">Transparency</div>
+                    <div class="comparison-value negative" data-label="Current AI">Black box</div>
+                    <div class="comparison-value highlight" data-label="Human Cognition">Inspectable</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-label" data-label="Capability">Compute Required</div>
+                    <div class="comparison-value negative" data-label="Current AI">Datacenters</div>
+                    <div class="comparison-value highlight" data-label="Human Cognition">20 watts (brain)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="solution">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">The Breakthrough</div>
+                <h2 class="section-title">IRIS: Actual AGI</h2>
+                <p class="section-subtitle">Real reasoning through cognitive architecture. Not prediction. Not pattern matching. Real cognition.</p>
+            </div>
+
+            <div class="solution-showcase fade-in">
+                <div class="solution-visual">
+                    <div class="brain-visualization">
+                        <div class="brain-ring"></div>
+                        <div class="brain-ring"></div>
+                        <div class="brain-ring"></div>
+                        <div class="brain-core"></div>
+                    </div>
+                </div>
+                <div class="solution-content">
+                    <h3>Biologically Inspired Cognitive Architecture</h3>
+                    <p>IRIS implements human like cognition through three original theoretical frameworks developed from first principles in physics and electrical engineering.</p>
+                    
+                    <div class="tech-stack">
+                        <div class="tech-item">
+                            <strong>KIT</strong>
+                            <span>Knowledge Interference Theory. How human memory actually works through dynamic interference patterns, not database lookups</span>
+                        </div>
+                        <div class="tech-item">
+                            <strong>APRA</strong>
+                            <span>Analytical Probabilistic Reasoning Architecture. How human reasoning actually works through structured analytical processes</span>
+                        </div>
+                        <div class="tech-item">
+                            <strong>Hebbian</strong>
+                            <span>Biological learning mechanisms. Neurons that fire together, wire together, implemented computationally</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="architecture">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">Core Innovation</div>
+                <h2 class="section-title">Three Fundamental Breakthroughs</h2>
+            </div>
+
+            <div class="arch-grid">
+                <div class="arch-card fade-in">
+                    <div class="arch-number">01</div>
+                    <h3>Knowledge Interference Theory</h3>
+                    <p>Traditional AI treats memory as database retrieval, expensive and unscalable. IRIS treats memory as dynamic interference patterns where knowledge emerges from interactions, not storage. Like quantum mechanics, context determines state. Result: 1000x reduction in memory operations.</p>
+                </div>
+                <div class="arch-card fade-in">
+                    <div class="arch-number">02</div>
+                    <h3>APRA Reasoning</h3>
+                    <p>Traditional AI uses statistical pattern matching. IRIS uses structured analytical reasoning through controlled randomness, Monte Carlo Tree Search for planning, particle based probabilistic inference for deduction. True logical reasoning without transformer complexity.</p>
+                </div>
+                <div class="arch-card fade-in">
+                    <div class="arch-number">03</div>
+                    <h3>Autonomous Learning</h3>
+                    <p>IRIS learns continuously without human intervention. Hebbian learning strengthens neural pathways. Memory consolidation, like human sleep, optimizes storage. Experience replay improves from past interactions. Recursive self improvement modifies its own code.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proof Section -->
+    <section id="proof" class="proof">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">Validation</div>
+                <h2 class="section-title">The Phone Is The Proof</h2>
+                <p class="section-subtitle">Real intelligence does not need datacenters. Only fake intelligence, brute force prediction, requires massive compute.</p>
+            </div>
+
+            <div class="proof-grid fade-in">
+                <div class="proof-stat">
+                    <div class="proof-value">60K+</div>
+                    <div class="proof-label">Lines of Cognitive Architecture</div>
+                </div>
+                <div class="proof-stat">
+                    <div class="proof-value">100%</div>
+                    <div class="proof-label">CPU Based (No GPU Required)</div>
+                </div>
+                <div class="proof-stat">
+                    <div class="proof-value">2GB</div>
+                    <div class="proof-label">Knowledge Base with Autonomous Learning</div>
+                </div>
+                <div class="proof-stat">
+                    <div class="proof-value">0</div>
+                    <div class="proof-label">Hallucinations (Inspectable Memory)</div>
+                </div>
+            </div>
+
+            <div class="proof-highlight fade-in">
+                <h3>Why Mobile Deployment Matters</h3>
+                <p>"The fact that IRIS runs on a phone is not the goal, it is the proof. It proves we have architected real intelligence, not brute force prediction. Real thinking is naturally efficient. Fake thinking requires massive compute. The phone validates our physics based approach to AI efficiency."</p>
+                <p style="margin-top: 1.5rem; font-style: italic; color: var(--primary);">— Davies B. Kalori, Founder</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Section -->
+    <section id="market" class="market">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">Opportunity</div>
+                <h2 class="section-title">Markets Requiring Real Intelligence</h2>
+                <p class="section-subtitle">Statistical prediction cannot power the next generation of AI applications. Real intelligence can.</p>
+            </div>
+
+            <div class="market-grid">
+                <div class="market-card fade-in">
+                    <div class="market-size">$38B</div>
+                    <h3>Robotics and Humanoids</h3>
+                    <p>Tesla Optimus, Figure, and others cannot carry datacenters. They need on board AGI for real time reasoning in novel situations. IRIS enables the robotics industry to solve its intelligence bottleneck.</p>
+                </div>
+                <div class="market-card fade-in">
+                    <div class="market-size">$400B</div>
+                    <h3>Autonomous Vehicles</h3>
+                    <p>Full self driving requires real time reasoning without cloud latency. Must work in tunnels, rural areas, anywhere. Safety demands local processing, not cloud dependency with network lag.</p>
+                </div>
+                <div class="market-card fade-in">
+                    <div class="market-size">$60B</div>
+                    <h3>Edge AI and Industrial</h3>
+                    <p>Military, space, and industrial applications cannot rely on cloud connectivity. Intelligence where datacenters physically cannot reach: defense systems, spacecraft, remote automation, disaster zones.</p>
+                </div>
+                <div class="market-card fade-in">
+                    <div class="market-size">$300B</div>
+                    <h3>Enterprise Transparency</h3>
+                    <p>Black box AI creates liability and regulatory issues. EU AI Act and corporate compliance demand explainable decisions. IRIS offers fully inspectable memories and debuggable processes.</p>
+                </div>
+                <div class="market-card market-total fade-in">
+                    <div class="market-size">$1T+</div>
+                    <h3>Total Addressable Market by 2030</h3>
+                    <p>Infrastructure that enables next generation AI applications impossible with current datacenter dependent architecture.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Traction Section -->
+    <section id="traction" class="traction">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">Progress</div>
+                <h2 class="section-title">Development Milestones</h2>
+            </div>
+
+            <div class="traction-timeline">
+                <div class="traction-item fade-in">
+                    <div class="traction-content">
+                        <div class="traction-date">2024</div>
+                        <h4>Architecture Foundation</h4>
+                        <p>Knowledge Interference Theory formulated. APRA reasoning architecture designed. Core cognitive framework implemented from first principles.</p>
+                    </div>
+                </div>
+                <div class="traction-item fade-in">
+                    <div class="traction-content">
+                        <div class="traction-date">January 2026</div>
+                        <h4>Mobile Deployment</h4>
+                        <p>Complete AGI system successfully deployed and running on Android (Termux) and iOS (Pythonista). 60,000+ lines of functional cognitive architecture. Proof of efficiency established on mobile hardware.</p>
+                    </div>
+                </div>
+                <div class="traction-item fade-in">
+                    <div class="traction-content">
+                        <div class="traction-date">Q1 2026</div>
+                        <h4>Autonomous Learning</h4>
+                        <p>Hebbian learning, memory consolidation, and experience replay implemented. 2GB knowledge base with continuous learning capabilities. Multi domain reasoning demonstrated.</p>
+                    </div>
+                </div>
+                <div class="traction-item fade-in">
+                    <div class="traction-content">
+                        <div class="traction-date">Next</div>
+                        <h4>Multi Modal and Scale</h4>
+                        <p>Vision integration, comprehensive benchmarking vs GPT 4/Claude, robotics partnerships, and academic validation. Seeking investment to accelerate.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">Leadership</div>
+                <h2 class="section-title">Founder</h2>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-card fade-in">
+                    <div class="team-avatar">DK</div>
+                    <h3>Davies B. Kalori</h3>
+                    <div class="team-role">Founder and Chief Architect</div>
+                    <div class="team-bio">
+                        <ul>
+                            <li>Electrical and Electronics Engineering background, approaches AI as a physics problem, not a software problem</li>
+                            <li>Creator of Knowledge Interference Theory (KIT) and APRA, novel frameworks for memory and reasoning</li>
+                            <li>Self taught systems programming (Python, C, C++) for AI implementation</li>
+                            <li>Expertise in power consumption, computational density, and heat dissipation optimization</li>
+                            <li>Building from first principles in Nairobi, Kenya, Africa's number one tech hub</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section id="vision" class="vision">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">Roadmap</div>
+                <h2 class="section-title">Building the Future of Intelligence</h2>
+            </div>
+
+            <div class="vision-grid">
+                <div class="vision-card fade-in">
+                    <div class="vision-timeline">12 Months</div>
+                    <h3>Research and Validation</h3>
+                    <ul>
+                        <li>Multi modal vision system complete</li>
+                        <li>Published benchmarks: 100x+ efficiency vs GPT 4</li>
+                        <li>2 to 3 peer reviewed papers on KIT/APRA</li>
+                        <li>First commercial robotics deployment</li>
+                        <li>Patent applications filed</li>
+                        <li>Seed funding: $1M raised</li>
+                    </ul>
+                </div>
+                <div class="vision-card featured fade-in">
+                    <div class="vision-timeline">24 Months</div>
+                    <h3>Commercial Deployment</h3>
+                    <ul>
+                        <li>Multiple robotics companies using IRIS</li>
+                        <li>Autonomous vehicle pilot programs</li>
+                        <li>Edge AI deployments at scale</li>
+                        <li>Academic citations and industry recognition</li>
+                        <li>Series A from strategic investors</li>
+                        <li>Team expansion to 5+ researchers</li>
+                    </ul>
+                </div>
+                <div class="vision-card fade-in">
+                    <div class="vision-timeline">5 Years</div>
+                    <h3>Industry Standard</h3>
+                    <ul>
+                        <li>IRIS as standard for efficient AGI</li>
+                        <li>Alternative to datacenter dependent AI</li>
+                        <li>Hundreds of robots/vehicles powered by IRIS</li>
+                        <li>Sustainable AI scaling path proven</li>
+                        <li>Kenya established as AI research powerhouse</li>
+                        <li>True artificial intelligence realized</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">Investment</div>
+                <h2 class="section-title">Join the Intelligence Revolution</h2>
+                <p class="section-subtitle">We are not making AI cheaper. We are building the first real AGI.</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info fade-in">
+                    <h3>Investor Inquiries</h3>
+                    <p>Seeking deep tech investors who understand that fundamental breakthroughs require first principles thinking. We are solving AI's unsustainable trajectory through physics innovation, not incremental optimization.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div>
+                                <strong>Email</strong>
+                                <span>agisapient@gmail.com</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <strong>Location</strong>
+                                <span>Nairobi, Kenya (Africa's Number One Tech Hub)</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">🚀</div>
+                            <div>
+                                <strong>Stage</strong>
+                                <span>Pre seed / Research and Development</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">💡</div>
+                            <div>
+                                <strong>Seeking</strong>
+                                <span>$500K to $1M Seed Round</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form fade-in">
+                    <form onsubmit="event.preventDefault(); alert('Thank you for your interest. We will contact you shortly.');">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" placeholder="investor@firm.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Organization</label>
+                            <input type="text" placeholder="Investment firm or company">
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea placeholder="Tell us about your investment thesis and how you can help accelerate IRIS development..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Request Investor Deck</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Sapient Intelligence</div>
+            <p class="footer-text">Building the first real Artificial General Intelligence. Nairobi, Kenya.</p>
+            <div class="footer-links">
+                <a href="#problem">Problem</a>
+                <a href="#solution">Solution</a>
+                <a href="#proof">Proof</a>
+                <a href="#market">Market</a>
+                <a href="#vision">Vision</a>
+            </div>
+            <p class="footer-copy">© 2026 Sapient Intelligence. All rights reserved. IRIS is a trademark of Sapient Intelligence.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle (basic implementation)
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.background = 'var(--dark)';
+                navLinks.style.padding = '2rem';
+                navLinks.style.borderBottom = '1px solid var(--gray)';
+            }
+        });
+
+        // Add parallax effect to hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
+
+        
