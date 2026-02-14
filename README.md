@@ -2,9 +2,9 @@
 
 **Author: Davies B. Kalori**
 
-**Status: Foundation Implementation (10,000+ LOC)**
+**Status: Foundation Implementation (60,000+ LOC)**
 
-**Paradigm: Non-Linguistic Cognitive Architecture**
+**Paradigm: Human-like Cognitive Architecture**
 
 
 
